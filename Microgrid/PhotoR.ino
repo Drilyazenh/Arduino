@@ -17,6 +17,6 @@ Serial.print("PhotoR = ");
 
 Serial.println(photocellReading); // аналоговые значения с сенсора
 
-delay(100);
+delay(2000);
 
 }

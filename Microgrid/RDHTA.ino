@@ -23,7 +23,7 @@ pinMode (13, OUTPUT);
 
   uint32_t currentFrequency;
     
-  Serial.println("Hello!");
+  Serial.println("R H T V I P" );
   
   // Initialize the INA219.
   // By default the initialization will use the largest range (32V, 2A).  However
@@ -37,7 +37,7 @@ pinMode (13, OUTPUT);
   // Or to use a lower 16V, 400mA range (higher precision on volts and amps):
   //ina219.setCalibration_16V_400mA();
 
-  Serial.println("Measuring voltage and current with INA219 ...");
+  //Serial.println("Measuring voltage and current with INA219 ...");
 
 }
 
@@ -57,24 +57,37 @@ void loop(void) {
   // считываем температуру (t) и влажность (h)
    float h = dht.readHumidity();
    float t = dht.readTemperature();
-   float hic = dht.computeHeatIndex(t, h, false);
+   //float hic = dht.computeHeatIndex(t, h, false);
 
 photocellReading = analogRead(photocellPin);
 
-Serial.print("PhotoR = ");
+//Serial.print("PhotoR = ");
 
-Serial.println(photocellReading); // аналоговые значения с сенсора
+
   // выводим температуру (t) и влажность (h) на монитор порта
-   Serial.print(F("Humidity: "));Serial.print(h);
-  Serial.print(F("%  Temperature: "));Serial.print(t);
-  Serial.print(F("°C "));Serial.print(F("°F  Heat index: "));
-  Serial.print(hic);Serial.print(F("°C "));
-Serial.print("Bus Voltage:   "); Serial.print(busvoltage); Serial.println(" V");
-  Serial.print("Shunt Voltage: "); Serial.print(shuntvoltage); Serial.println(" mV");
-  Serial.print("Load Voltage:  "); Serial.print(loadvoltage); Serial.println(" V");
-  Serial.print("Current:       "); Serial.print(current_mA); Serial.println(" mA");
-  Serial.print("Power:         "); Serial.print(power_mW); Serial.println(" mW");
-  Serial.println("");
+  // Serial.print(F("Humidity: "));Serial.print(h);
+ // Serial.print(F("%  Temperature: "));Serial.print(t);
+ // Serial.print(F("°C "));Serial.print(F("°F  Heat index: "));
+ // Serial.print(hic);Serial.print(F("°C "));
+//Serial.print("Bus Voltage:   "); Serial.print(busvoltage); Serial.println(" V");
+ // Serial.print("Shunt Voltage: "); Serial.print(shuntvoltage); Serial.println(" mV");
+ // Serial.print("Load Voltage:  "); Serial.print(loadvoltage); Serial.println(" V");
+  //Serial.print("Current:       "); Serial.print(current_mA); Serial.println(" mA");
+ // Serial.print("Power:         "); Serial.print(power_mW); Serial.println(" mW");
+
+ // Serial.println("");
+Serial.print(photocellReading);
+// аналоговые значения с сенсора
+Serial.print(" ");
+Serial.print(h);
+Serial.print(" ");
+Serial.print(t);
+Serial.print(" ");
+Serial.print(loadvoltage);
+Serial.print(" ");
+Serial.print(current_mA);
+Serial.print(" ");
+Serial.println(power_mW);
 delay(2000);
 
 }
